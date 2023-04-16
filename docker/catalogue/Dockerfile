@@ -1,9 +1,9 @@
 #FROM golang:1.7
 FROM ubuntu
 RUN apt update
-RUN apt install ca-certificates libgnutls30 -y
+RUN apt install ca-certificates libgnutls30 wget -y
 
-RUN curl -OL https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz && \
+RUN wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz && \
     tar -zxvf go1.7.1.linux-amd64.tar.gz -C /usr/local/ && \
     export PATH=$PATH:/usr/local/go/bin
 
