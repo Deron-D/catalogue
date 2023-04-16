@@ -1,6 +1,7 @@
 #FROM golang:1.7
 FROM ubuntu
-RUN apt update && apt install ca-certificates libgnutls30 -y
+RUN apt update
+RUN apt install ca-certificates libgnutls30 -y
 
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
