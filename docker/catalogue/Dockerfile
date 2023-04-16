@@ -11,9 +11,9 @@ RUN echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
 
-RUN go get -u github.com/FiloSottile/gvt
+RUN /usr/local/go/bin/go get -u github.com/FiloSottile/gvt
 RUN gvt restore && \
-    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app github.com/microservices-demo/catalogue/cmd/cataloguesvc
+    CGO_ENABLED=0 GOOS=linux /usr/local/go/bin/go build -a -installsuffix cgo -o /app github.com/microservices-demo/catalogue/cmd/cataloguesvc
 
 FROM alpine:3.4
 
