@@ -1,7 +1,7 @@
 #FROM golang:1.7
 FROM ubuntu
 RUN apt update
-RUN apt install ca-certificates libgnutls30 wget -y
+RUN apt install ca-certificates libgnutls30 wget git -y
 
 
 RUN wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
