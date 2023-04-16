@@ -3,6 +3,10 @@ FROM ubuntu
 RUN apt update
 RUN apt install ca-certificates libgnutls30 -y
 
+RUN curl -OL https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz && \
+    tar -zxvf go1.7.1.linux-amd64.tar.gz -C /usr/local/ && \
+    export PATH=$PATH:/usr/local/go/bin
+
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
 
