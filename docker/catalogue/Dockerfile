@@ -1,4 +1,4 @@
-FROM golang:1.20
+FROM golang:1.9
 
 # RUN apt update
 # RUN apt install ca-certificates libgnutls30 -y
