@@ -1,13 +1,13 @@
-#FROM golang:1.7
-FROM ubuntu
-RUN apt update
-RUN apt install ca-certificates libgnutls30 wget git -y
+FROM golang:1.7
+# FROM ubuntu
+RUN apt-get update
+RUN apt-get install ca-certificates libgnutls30 -y
 
 
-RUN wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
-RUN tar -zxvf go1.7.1.linux-amd64.tar.gz -C /usr/local/
-ENV PATH=$PATH:/usr/local/go/bin \
-    GOPATH=/usr/local/go/bin
+# RUN wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
+# RUN tar -zxvf go1.7.1.linux-amd64.tar.gz -C /usr/local/
+# ENV PATH=$PATH:/usr/local/go/bin \
+#     GOPATH=/usr/local/go/bin
 
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
