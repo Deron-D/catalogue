@@ -3,17 +3,17 @@ FROM ubuntu
 RUN apt update
 RUN apt install ca-certificates libgnutls30 wget -y
 
+
 RUN wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
 RUN tar -zxvf go1.7.1.linux-amd64.tar.gz -C /usr/local/
-RUN echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
-# RUN source ~/.profile
+ENV PATH=$PATH:/usr/local/go/bin
 
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
 
-RUN /usr/local/go/bin/go get -u github.com/FiloSottile/gvt
+RUN go get -u github.com/FiloSottile/gvt
 RUN gvt restore && \
-    GOPATH=/usr/local/go/bin CGO_ENABLED=0 GOOS=linux /usr/local/go/bin/go build -a -installsuffix cgo -o /app github.com/microservices-demo/catalogue/cmd/cataloguesvc
+    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app github.com/microservices-demo/catalogue/cmd/cataloguesvc
 
 FROM alpine:3.4
 
