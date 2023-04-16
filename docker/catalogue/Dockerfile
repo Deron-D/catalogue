@@ -5,7 +5,8 @@ RUN apt install ca-certificates libgnutls30 wget -y
 
 RUN wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz && \
     tar -zxvf go1.7.1.linux-amd64.tar.gz -C /usr/local/ && \
-    export PATH=$PATH:/usr/local/go/bin
+    echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile && \
+    source ~/.profile
 
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
